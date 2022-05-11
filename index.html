@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-Tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS 練習</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon/favicon-16x16.png">
+
+    <!-- plugins css -->
+    <link rel="stylesheet" href="./plugins/openlayers/ol.css">
+    <link rel="stylesheet" href="./plugins/fontello/css/fontello.css">
+    <link rel="stylesheet" href="./plugins/tw-elements/tw-elements.min.css">
+    <!-- <link rel="stylesheet" href="./plugins/vue-select/vue-select.min.css"> -->
+
+    <!-- plugins JS -->
+    <script src="./plugins/axios/axios.min.js" defer></script>
+    <script src="./plugins/better-scroll/core.min.js" defer></script>
+    <script src="./plugins/openlayers/ol.js" defer></script>
+    <script src="./plugins/vue/vue.global.js" defer></script>
+    <script src="./plugins/vue-router/vue-router.global.js" defer></script>
+    <script src="./plugins/tw-elements/tailwind.min.js"></script>
+    <!-- <script src="./plugins/vue-select/vue-select.min.js"></script> -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- script -->
+    <script src="./js/main.js" type="module"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <!-- plugins JS -->
+    <script src="./plugins/tw-elements/index.min.js"></script>
+</body>
+
+</html>
