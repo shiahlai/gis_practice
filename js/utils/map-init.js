@@ -8,7 +8,8 @@ export default function () {
     });
     // #2 引入map圖層列表
     let baseLayerGroup = new ol.layer.Group({
-        layers: sourceLayers.data
+        layers: sourceLayers.data,
+        title: 'baseMap',
     })
     // #3 將map綁定圖層
     map.addLayer(baseLayerGroup);
@@ -18,13 +19,15 @@ export default function () {
         zoom: 8,
         minZoom: 8,
         maxZoom: 18,
-        extent: [13065484.655591443, 2432948.0717033036, 13780323.74411441, 2971676.2470572256]
+        // extent: [13065484.655591443, 2432948.0717033036, 13780323.74411441, 2971676.2470572256]
     });
     // #5 將map綁定初始視角
     map.setView(view);
     // #6 增加控件
     map.addControl(new ol.control.Zoom({ target: 'mapZoomInOut' }));
+    
     map.addControl(new ol.control.ScaleLine({ target: 'mapScaleLine' }));
+
     map.addControl(new ol.control.MousePosition({
         target: "wgs84",
         className: "wgs-84",

@@ -1,6 +1,7 @@
 import MapToolBar from '../components/MapToolbar.vue.js'
 import mapInit from '../utils/map-init.js'
 import MapControlMousePosition from '../components/MapControlMousePosition.vue.js'
+import MapChangeBasemap from '../components/MapChangeBasemap.vue.js'
 
 const { ref, reactive, onMounted, computed, provide, inject } = Vue;
 const { useRouter, useRoute } = VueRouter;
@@ -9,7 +10,8 @@ export default {
     name: 'Map',
     components: {
         'map-toolbar': MapToolBar,
-        'map-control-mouse-position': MapControlMousePosition
+        'map-control-mouse-position': MapControlMousePosition,
+        'map-change-basemap' : MapChangeBasemap,
     },
     template: `
     <!-- main -->
@@ -20,12 +22,15 @@ export default {
             <div 
             class="rt-block" 
             v-if="olMap.rtBlock">
+               <map-change-basemap />
             </div>
 
             <div 
             class="rm-block" 
             v-if="olMap.rmBlock">
-                <section id="mapZoomInOut"></section>                
+                <section id="mapZoomInOut"></section>
+                <section id="mapTaiwan">
+                <button class="bg-slate-800/60 py-1 rounded text-white text-3xl"><i class="icon-taiwan"></button></section>                
             </div>
 
             <div 
