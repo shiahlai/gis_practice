@@ -12,4 +12,4 @@ const app = {
     }
 }
 
-Vue.createApp(app).use(router).mount('#app'); //component('v-select', VueSelect.VueSelect)
+Vue.createApp(app).use(router).mount('#app');

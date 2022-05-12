@@ -13,24 +13,28 @@
           flex-grow: 1;
 }
 
-#mapPage #map > .rt-block, #mapPage #map > .rb-block {
+#mapPage #map > .rt-block,
+#mapPage #map > .rb-block,
+#mapPage #map > .rm-block {
   position: absolute;
-  right: 0.5rem;
+  right: 1rem;
   z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
+  -ms-flex-align: end;
+  align-items: end;
   gap: 1rem;
 }
 
-#mapPage #map > .rt-block section > div, #mapPage #map > .rb-block section > div {
+#mapPage #map > .rt-block section > div,
+#mapPage #map > .rb-block section > div,
+#mapPage #map > .rm-block section > div {
   position: static;
 }
 
@@ -40,6 +44,29 @@
 
 #mapPage #map > .rb-block {
   bottom: 0.5rem;
+}
+
+#mapPage #map > .rm-block {
+  top: 30%;
+}
+
+#mapPage #map .ol-control {
+  padding: 0px;
+}
+
+#mapPage #map .ol-control button {
+  margin: 0px;
+  font-size: 1.75rem;
+  background-color: rgba(1, 46, 100, 0.7) !important;
+}
+
+#mapPage #map .ol-zoom .ol-zoom-in {
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 2px;
+}
+
+#mapPage #map .ol-zoom .ol-zoom-out {
+  border-radius: 0 0 4px 4px;
 }
 
 #mapPage #mapToolbar {
@@ -122,17 +149,6 @@
 
 #mapPage #mapToolbar .toolbar-nav ul li a i:hover {
   color: inherit;
-}
-
-#mapPage #mapToolbar .btn-nav-toggle {
-  border-radius: 0 5px 5px 0;
-  margin: 0.75rem 0 0;
-  border: 0;
-  padding: 0;
-  background-color: #aaa;
-  color: #fff;
-  -webkit-transition: background-color 0.2s;
-  transition: background-color 0.2s;
 }
 
 #mapPage #mapToolbar .btn-nav-toggle:hover {
@@ -231,35 +247,6 @@ body .text-main {
   flex-grow: 1;
 }
 
-#mapPage #map > .rt-block, #mapPage #map > .rb-block {
-  position: absolute;
-  right: 0.5rem;
-  z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: end;
-  gap: 1rem;
-}
-
-#mapPage #map > .rt-block section > div, #mapPage #map > .rb-block section > div {
-  position: static;
-}
-
-#mapPage #map > .rt-block {
-  top: 2rem;
-}
-
-#mapPage #map > .rb-block {
-  bottom: 0.5rem;
-}
-
 #mapPage #mapToolbar {
   position: absolute;
   top: 0.5rem;
@@ -324,7 +311,7 @@ body .text-main {
 
 #mapPage #mapToolbar .toolbar-nav ul li a:hover {
   color: #fff;
-  background-color: #00a687;
+  background-color: #f59e0b;
 }
 
 #mapPage #mapToolbar .toolbar-nav ul li a i {
@@ -346,7 +333,7 @@ body .text-main {
   margin: 0.75rem 0 0;
   border: 0;
   padding: 0;
-  background-color: #aaa;
+  background-color: #eab308;
   color: #fff;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;

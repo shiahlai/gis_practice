@@ -174,7 +174,7 @@ export default {
     // }
 
     const getapi = () => {
-      let parm = 'ListCounty/' + apis.COUNTY + ((apis.TOWN !== '') ? '/' + vm.apis.TOWN : '');
+      let parm = 'ListCounty/' + apis.COUNTY + ((apis.TOWN !== '') ? '/' + apis.TOWN : '');
       https.get(parm)
         .then(function (res) {
           if (res.data.data.townItem) {
@@ -182,11 +182,11 @@ export default {
           } else if (res.data.data.sectItem) {
             apis.RULES_SEC = (res.data.data.sectItem);
           }
-          loader.hide();
+          // loader.hide();
         })
         .catch(function (err) {
           console.log(err);
-          loader.hide();
+          // loader.hide();
         });
     }
 
@@ -194,12 +194,12 @@ export default {
       if (value == 0) {
         apis.TOWN = '';
         apis.SEC = '';
-        clear()
+        // clear()
       } else if (value == 1) {
         apis.SEC = '';
-        clear()
+        // clear()
       } else if (value == 2) {
-        clear()
+        // clear()
       }
     }
 
@@ -252,15 +252,15 @@ export default {
               if (i == 0) {
                 location(info[0]);
               }
-              loader.hide();
+              //loader.hide();
             }).catch(function (err) {
               console.log(err);
-              loader.hide();
+              //loader.hide();
             });
         });
       } else {
         alert('請填地號');
-        loader.hide();
+        //loader.hide();
       }
     }
 
@@ -333,48 +333,48 @@ export default {
 
             item.jsondata = nObj;
             ols.addlayers(item, obj.NO);
-            // loader.hide();
+            // //loader.hide();
           }
         }))
         .catch(function (err) {
           console.log(err);
-          // loader.hide();
+          // //loader.hide();
         });
     }
 
-    const clear = () => {
-      apis.OSEC = '';
-      apis.NO = '';
-      apis.NO8 = [];
-      info = null;
+    // const clear = () => {
+    //   apis.OSEC = '';
+    //   apis.NO = '';
+    //   apis.NO8 = [];
+    //   info = null;
 
-      ols.layer = parent.gis.vectorLayers.layer(ols.ln);
-      if (ols.layer !== undefined) {
-        ols.remove_layer(ols.layer);
-      }
+    //   ols.layer = parent.gis.vectorLayers.layer(ols.ln);
+    //   if (ols.layer !== undefined) {
+    //     ols.remove_layer(ols.layer);
+    //   }
 
-      var l;
-      while ((l = parent.cad_layers.pop()))
-        _map.removeLayer(l);
-    }
+    //   var l;
+    //   while ((l = parent.cad_layers.pop()))
+    //     _map.removeLayer(l);
+    // }
 
-    const clearlayer = () => {
-      var l;
-      while ((l = parent.cad_layers.pop())) {
-        _map.removeLayer(l);
-      }
-      ols.layer = parent.gis.vectorLayers.layer(ols.ln);
-      if (ols.layer !== undefined) {
-        ols.remove_layer(ols.layer);
-      }
-    }
+    // const clearlayer = () => {
+    //   var l;
+    //   while ((l = parent.cad_layers.pop())) {
+    //     _map.removeLayer(l);
+    //   }
+    //   ols.layer = parent.gis.vectorLayers.layer(ols.ln);
+    //   if (ols.layer !== undefined) {
+    //     ols.remove_layer(ols.layer);
+    //   }
+    // }
 
     //mounted
     onMounted(() => {
       https.get('ListCounty')
         .then(function (res) {
           apis.RULES_COUNTY = (res.data.data.countyItem);
-          loader.hide();
+          //loader.hide();
         })
         .catch(function (err) { })
     })
@@ -482,8 +482,8 @@ export default {
       location,
       identify,
       getcd,
-      clear,
-      clearlayer,
+      // clear,
+      // clearlayer,
     }
   }
 };

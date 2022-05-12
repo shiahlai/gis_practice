@@ -1,5 +1,6 @@
 import MapToolBar from '../components/MapToolbar.vue.js'
 import mapInit from '../utils/map-init.js'
+import MapControlMousePosition from '../components/MapControlMousePosition.vue.js'
 
 const { ref, reactive, onMounted, computed, provide, inject } = Vue;
 const { useRouter, useRoute } = VueRouter;
@@ -7,7 +8,8 @@ const { useRouter, useRoute } = VueRouter;
 export default {
     name: 'Map',
     components: {
-        'map-toolbar': MapToolBar
+        'map-toolbar': MapToolBar,
+        'map-control-mouse-position': MapControlMousePosition
     },
     template: `
     <!-- main -->
@@ -19,12 +21,20 @@ export default {
             class="rt-block" 
             v-if="olMap.rtBlock">
             </div>
+
+            <div 
+            class="rm-block" 
+            v-if="olMap.rmBlock">
+                <section id="mapZoomInOut"></section>                
+            </div>
+
             <div 
             class="rb-block" 
             v-if="olMap.rbBlock">
-                <section id="mapZoomInOut"></section>
+                <map-control-mouse-position />
                 <section id="mapScaleLine"></section>
             </div>
+
         </article>
         <map-toolbar></map-toolbar>
     </main>
@@ -33,7 +43,8 @@ export default {
         let olMap = reactive({
             map: null,
             rtBlock: true,
-            rbBlock: true
+            rbBlock: true,
+            rmBlock: true,
         });
         provide('olMap', olMap);
         onMounted(() => {
