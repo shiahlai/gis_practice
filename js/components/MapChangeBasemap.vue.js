@@ -34,7 +34,7 @@ export default {
     })
 
 
-    // 切换/设置图源
+    // 底圖切換
     function setSource(data) {
       ol.layer.setSource(source[data])
     }
