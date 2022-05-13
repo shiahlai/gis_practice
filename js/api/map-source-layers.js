@@ -9,7 +9,8 @@ for (let i = 0; i < 20; i++) {
 let osm = new ol.layer.Tile({
     source: new ol.source.OSM(),
     visible: false,
-    title: 'openStreetMap'
+    keepAlive: true,
+    title: 'openStreetMap'    
 });
 // 臺灣通用電子地圖(套疊等高線)
 let nlscEmap5 = new ol.layer.Tile({
@@ -27,6 +28,7 @@ let nlscEmap5 = new ol.layer.Tile({
         style: "_null"
     }),
     visible: true,
+    keepAlive: true,
     title: 'nlscEmap5'
 });
 // 臺灣通用正射影像圖
@@ -45,6 +47,7 @@ let nlscPhoto2 = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscPhoto2'
 });
 // 臺灣通用電子地圖混合影像
@@ -63,6 +66,7 @@ let nlscPhotoMix = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscPhotoMix'
 });
 // 臺灣通用電子地圖灰階版
@@ -81,6 +85,7 @@ let nlscEmap01 = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscEmap01'
 });
 // 國土利用現況調查成果圖
@@ -99,6 +104,7 @@ let nlscLuiMap = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscLuiMap'
 });
 // 非都市土地使用分區圖
@@ -117,6 +123,7 @@ let nlscNUrban1 = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscNUrban1'
 });
 // 非都市土地使用地類別圖
@@ -135,6 +142,7 @@ let nlscNUrban2 = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscNUrban2'
 });
 // 渲染圖
@@ -153,6 +161,7 @@ let nlscOIShaderMap = new ol.layer.Tile({
         style: "_null"
     }),
     visible: false,
+    keepAlive: true,
     title: 'nlscOIShaderMap'
 });
 

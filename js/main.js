@@ -12,4 +12,6 @@ const app = {
     }
 }
 
-Vue.createApp(app).use(router).mount('#app');
+Vue.createApp(app)
+    .use(router)
+    .mount('#app');

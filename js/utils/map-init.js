@@ -9,7 +9,6 @@ export default function () {
     // #2 引入map圖層列表
     let baseLayerGroup = new ol.layer.Group({
         layers: sourceLayers.data,
-        title: 'baseMap',
     })
     // #3 將map綁定圖層
     map.addLayer(baseLayerGroup);
