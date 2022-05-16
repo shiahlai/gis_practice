@@ -26,9 +26,9 @@ export default {
             <div 
             class="rt-block" 
             v-if="olMap.rtBlock">
-              
+                <map-change-basemap :map="olMap.map"></map-change-basemap>  
             </div>
-
+            
             <div 
             class="rm-block" 
             v-if="olMap.rmBlock">
@@ -67,6 +67,7 @@ export default {
         provide('olMap', olMap);
         onMounted(() => {
             olMap.map = mapInit();
+            console.log('map', olMap.map);
         })
         return {
             olMap

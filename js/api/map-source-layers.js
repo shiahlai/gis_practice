@@ -166,15 +166,13 @@ let nlscOIShaderMap = new ol.layer.Tile({
 });
 
 export default {
-    data: [
-        osm,
-        nlscEmap5,
-        nlscPhoto2,
-        nlscPhotoMix,
-        nlscEmap01,
-        nlscLuiMap,
-        nlscNUrban1,
-        nlscNUrban2,
-        nlscOIShaderMap
-    ]
+    osm,
+    nlscEmap5,
+    nlscPhoto2,
+    nlscPhotoMix,
+    nlscEmap01,
+    nlscLuiMap,
+    nlscNUrban1,
+    nlscNUrban2,
+    nlscOIShaderMap,
 }

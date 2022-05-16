@@ -5,13 +5,18 @@ export default function () {
     let map = new ol.Map({
         controls: [],
         target: 'map',
+        // #2 引入map圖層列表
+        layers: Object.values(sourceLayers),
     });
-    // #2 引入map圖層列表
-    let baseLayerGroup = new ol.layer.Group({
-        layers: sourceLayers.data,
-    })
-    // #3 將map綁定圖層
-    map.addLayer(baseLayerGroup);
+
+    // // #2 引入map圖層列表
+    // let baseLayerGroup = ol.Collection.Group({
+    //     layers: Object.values(sourceLayers),
+    // });
+
+    // // #3 將map綁定圖層
+    // map.addLayer(baseLayerGroup);
+
     // #4 設定初始視角
     let view = new ol.View({
         center: ol.proj.fromLonLat([120.58, 23.58]),
