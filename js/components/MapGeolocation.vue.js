@@ -5,7 +5,9 @@ export default {
   name: 'MapGeolocation',
   template: `
   <button id="locate"
-   class="bg-slate-800/60 p-2 rounded text-white text-xl"><i class="icon-target" /></button>
+   class="bg-slate-800/60 p-2 rounded text-white text-xl">
+   <i class="icon-target" />
+   </button>
     `,
   setup() {
     const view = new ol.View({});

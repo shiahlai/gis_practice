@@ -38,7 +38,9 @@ export default {
                 <button class="bg-slate-800/60 py-1 rounded text-white text-3xl">
                 <i class="icon-taiwan" />
                 </button>
-                </section>                
+                </section>           
+                
+                <map-geolocation />
                 
 
             </div>
