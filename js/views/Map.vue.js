@@ -15,7 +15,7 @@ export default {
         'map-control-mouse-position': MapControlMousePosition,
         'map-change-basemap' : MapChangeBasemap,
         'map-info' : MapInfo,
-        'map-geolcation' : MapGeolocation,
+        'map-geolocation' : MapGeolocation,
     },
     template: `
     <!-- main -->
@@ -27,6 +27,8 @@ export default {
             class="rt-block" 
             v-if="olMap.rtBlock">
                 <map-change-basemap :map="olMap.map"></map-change-basemap>  
+
+                
             </div>
             
             <div 
@@ -40,7 +42,7 @@ export default {
                 </button>
                 </section>           
                 
-                <map-geolocation />
+                <map-geolocation :map="olMap.map"></map-geolocation>
                 
 
             </div>
@@ -60,16 +62,18 @@ export default {
     `,
     setup() {
         let olMap = reactive({
-            map: null,
+            map: mapInit(),
             rtBlock: true,
             rbBlock: true,
             rmBlock: true,
         });
+        
         provide('olMap', olMap);
+
         onMounted(() => {
-            olMap.map = mapInit();
-            console.log('map', olMap.map);
+            olMap.map = mapInit();        
         })
+
         return {
             olMap
         }
