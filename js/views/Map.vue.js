@@ -3,7 +3,7 @@ import mapInit from '../utils/map-init.js'
 import MapControlMousePosition from '../components/MapControlMousePosition.vue.js'
 import MapChangeBasemap from '../components/MapChangeBasemap.vue.js'
 import MapInfo from '../components/MapInfo.vue.js'
-import MapTarget from '../components/MapTarget.vue.js'
+import MapGeolocation from '../components/MapGeolocation.vue.js'
 
 const { ref, reactive, onMounted, computed, provide, inject } = Vue;
 const { useRouter, useRoute } = VueRouter;
@@ -15,7 +15,7 @@ export default {
         'map-control-mouse-position': MapControlMousePosition,
         'map-change-basemap' : MapChangeBasemap,
         'map-info' : MapInfo,
-        'map-target' : MapTarget,
+        'map-geolcation' : MapGeolocation,
     },
     template: `
     <!-- main -->
@@ -39,8 +39,7 @@ export default {
                 <i class="icon-taiwan" />
                 </button>
                 </section>                
-
-                <map-target />
+                
 
             </div>
 

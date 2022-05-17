@@ -2,7 +2,7 @@ const { ref, reactive, onMounted, computed, provide, inject } = Vue;
 const { useRouter, useRoute } = VueRouter;
 
 export default {
-  name: 'MapTarget',
+  name: 'MapGeolocation',
   template: `
   <button id="locate"
    class="bg-slate-800/60 p-2 rounded text-white text-xl"><i class="icon-target" /></button>
