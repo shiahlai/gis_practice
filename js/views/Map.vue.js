@@ -50,9 +50,10 @@ export default {
             <div 
             class="rb-block" 
             v-if="olMap.rbBlock">
-                <map-info />
+                <map-info></map-info>
 
-                <map-control-mouse-position />
+                <map-control-mouse-position></map-control-mouse-position>
+                
                 <section id="mapScaleLine"></section>
             </div>
 

@@ -39,7 +39,7 @@ export default {
 
       const accuracyFeature = new ol.Feature();
       geolocation.on('change:accuracyGeometry', function () {
-        console.log('change:accuracyGeometry',geolocation.getAccuracyGeometry());
+        console.log('change:accuracyGeometry', geolocation.getAccuracyGeometry());
         accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
       });
 
@@ -84,15 +84,15 @@ export default {
           acc, alt, alt_acc, head, speed
         })
       });
-      
+
 
     })
 
-    
+
     let toggle = false;
     const MyFunction = () => {
-      toggle = ! toggle;
-      geolocation.setTracking(toggle);    
+      toggle = !toggle;
+      geolocation.setTracking(toggle);
       console.log('my func call', toggle);
     }
 
