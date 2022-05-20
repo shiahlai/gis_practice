@@ -81,19 +81,32 @@ export default {
 
   setup() {
 
+    onMounted(() => {
+      map = inject('olMap').map;
+
+      const view = map.getView();
+
+        })
+
     const placeholder = reactive({
       twd97: "表示方式如：250000.000,2677172.843",
       wgs84: "十進位表示方式如：121.0,23.0;121,24.2   度分秒表示方式如：121°00'35\",23°33'35\"",
       twd67: "表示方式如：218134.945,2674745.799",
     })
     
-    const getCoordinate = () =>({
+    const point = new ol.geom.Point({})
+    const size = new ol.size
 
-    })
+    const getCoordinate = () =>{
+      view.centerOn(point, message, size, [570, 500])
+
+    }
 
 
     return {
       placeholder,
+      point,
+      size,
       getCoordinate      
     }
   }
