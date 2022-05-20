@@ -6,7 +6,7 @@ export default {
   template: `
   <section id="mapGeolocation">
 
-    <button @click="MyFunction"
+    <button @click="getGeolocation" id="zoomToGeolocation"
     class="bg-slate-800/60 p-2 rounded text-white text-xl">
       <i class="icon-target" />
     </button>
@@ -15,7 +15,7 @@ export default {
     `,
   setup() {
 
-    let map, geolocation, positionFeature;
+    let map, geolocation;
 
     onMounted(() => {
       map = inject('olMap').map;
@@ -28,6 +28,7 @@ export default {
           enableHighAccuracy: true,
         },
         projection: view.getProjection(),
+        
       });
 
       // handle geolocation error.
@@ -43,7 +44,7 @@ export default {
         accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
       });
 
-      positionFeature = new ol.Feature();
+      const positionFeature = new ol.Feature();
       positionFeature.setStyle(
         new ol.style.Style({
           image: new ol.style.Circle({
@@ -72,32 +73,18 @@ export default {
         }),
       });
 
-      // update the HTML page when the position changes.
-      geolocation.on('change', function () {
-        const acc = geolocation.getAccuracy() + ' [m]';
-        const alt = geolocation.getAltitude() + ' [m]';
-        const alt_acc = geolocation.getAltitudeAccuracy() + ' [m]';
-        const head = geolocation.getHeading() + ' [rad]';
-        const speed = geolocation.getSpeed() + ' [m/s]';
-
-        console.log('geo changed', {
-          acc, alt, alt_acc, head, speed
-        })
-      });
-
-
     })
 
 
     let toggle = false;
-    const MyFunction = () => {
+    const getGeolocation = () => {
       toggle = !toggle;
       geolocation.setTracking(toggle);
       console.log('my func call', toggle);
     }
 
     return {
-      MyFunction,
+      getGeolocation,
     }
   },
 };
