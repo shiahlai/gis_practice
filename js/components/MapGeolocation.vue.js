@@ -1,4 +1,4 @@
-const { ref, reactive, onMounted, computed, provide, inject } = Vue;
+const { ref, reactive, onMounted, computed, provide, inject, nextTick } = Vue;
 const { useRouter, useRoute } = VueRouter;
 
 export default {
@@ -15,7 +15,7 @@ export default {
     `,
   setup() {
 
-    let map, geolocation;
+    let map, geolocation, componentLayer;
 
     onMounted(() => {
       map = inject('olMap').map;
@@ -47,15 +47,11 @@ export default {
       const positionFeature = new ol.Feature();
       positionFeature.setStyle(
         new ol.style.Style({
-          image: new ol.style.Circle({
-            radius: 6,
-            fill: new ol.style.Fill({
-              color: '#3399CC',
-            }),
-            stroke: new ol.style.Stroke({
-              color: '#fff',
-              width: 2,
-            }),
+          image: new ol.style.Icon({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: '../icon/person_pin.svg',
           }),
         })
       );
@@ -66,7 +62,7 @@ export default {
         positionFeature.setGeometry(coordinates ? new ol.geom.Point(coordinates) : null);
       });
 
-      new ol.renderer.canvas.VectorLayer({
+      componentLayer = new ol.layer.Vector({
         map: map,
         source: new ol.source.Vector({
           features: [accuracyFeature, positionFeature],
@@ -82,6 +78,12 @@ export default {
       geolocation.setTracking(toggle);
       console.log('my func call', toggle);
     }
+
+    onMounted(() => {
+      nextTick(()=>{
+        map.addLayer(componentLayer);
+      })
+    })
 
     return {
       getGeolocation,

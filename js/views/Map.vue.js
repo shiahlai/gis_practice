@@ -4,6 +4,8 @@ import MapControlMousePosition from '../components/MapControlMousePosition.vue.j
 import MapChangeBasemap from '../components/MapChangeBasemap.vue.js'
 import MapInfo from '../components/MapInfo.vue.js'
 import MapGeolocation from '../components/MapGeolocation.vue.js'
+import testPosition from '../components/testPosition.vue.js'
+import MapTaiwanPosition from '../components/MapTaiwanPosition.vue.js'
 
 const { ref, reactive, onMounted, computed, provide, inject } = Vue;
 const { useRouter, useRoute } = VueRouter;
@@ -16,6 +18,8 @@ export default {
         'map-change-basemap' : MapChangeBasemap,
         'map-info' : MapInfo,
         'map-geolocation' : MapGeolocation,
+        'test-position' : testPosition,
+        'map-taiwan-position' : MapTaiwanPosition,
     },
     template: `
     <!-- main -->
@@ -26,7 +30,8 @@ export default {
             <div 
             class="rt-block" 
             v-if="olMap.rtBlock">
-                <map-change-basemap :map="olMap.map"></map-change-basemap>  
+                <map-change-basemap :map="olMap.map"></map-change-basemap>
+
 
                 
             </div>
@@ -36,11 +41,7 @@ export default {
             v-if="olMap.rmBlock">
                 <section id="mapZoomInOut"></section>
 
-                <section id="mapTaiwan">
-                <button class="bg-slate-800/60 py-1 rounded text-white text-3xl">
-                <i class="icon-taiwan" />
-                </button>
-                </section>           
+                <map-taiwan-position></map-taiwan-position>
                 
                 <map-geolocation :map="olMap.map"></map-geolocation>
                 
