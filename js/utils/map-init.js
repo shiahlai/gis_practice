@@ -68,6 +68,10 @@ export default function () {
         }
     });
 
+    new ol.control.Attribution({
+        collapsible: true,
+      });
+
     // console.log(map.getView().calculateExtent(map.getSize()))
 
     return map
