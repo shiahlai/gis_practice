@@ -175,6 +175,9 @@ let nlscOIShaderMap = new ol.layer.Tile({
     title: 'nlscOIShaderMap'
 });
 
+
+
+
 export default {
     osm,
     nlscEmap5,
@@ -185,4 +188,5 @@ export default {
     nlscNUrban1,
     nlscNUrban2,
     nlscOIShaderMap,
+
 }

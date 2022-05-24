@@ -17,9 +17,10 @@ export default {
 
     let map, geolocation, componentLayer;
 
-    onMounted(() => {
-      map = inject('olMap').map;
-
+    
+    const drawIcon = (map) => {
+      
+      
       const view = map.getView();
 
       geolocation = new ol.Geolocation({
@@ -44,33 +45,36 @@ export default {
         accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
       });
 
-      const positionFeature = new ol.Feature();
-      positionFeature.setStyle(
-        new ol.style.Style({
-          image: new ol.style.Icon({
-            anchor: [0.5, 46],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: '../icon/person_pin.svg',
-          }),
-        })
-      );
+    
+      const iconFeature = new ol.Feature();
+      
+      const iconStyle = new ol.style.Style({
+        image: new ol.style.Icon({
+          anchor: [0.5, 46],
+          anchorXUnits: 'fraction',
+          anchorYUnits: 'pixels',
+          src: '../icon/person_pin.svg',
+        }),
+      });
+      
+      iconFeature.setStyle(iconStyle);
+      
+      const vectorSource = new ol.source.Vector({
+        features: [iconFeature],
+      });
+      
+      const vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+      });
+      map.addLayer(vectorLayer)
 
       geolocation.on('change:position', function () {
         const coordinates = geolocation.getPosition();
         console.log('change:position', coordinates)
-        positionFeature.setGeometry(coordinates ? new ol.geom.Point(coordinates) : null);
+        iconFeature.setGeometry(coordinates ? new ol.geom.Point(coordinates) : null);
       });
-
-      componentLayer = new ol.layer.Vector({
-        map: map,
-        source: new ol.source.Vector({
-          features: [accuracyFeature, positionFeature],
-        }),
-      });
-
-    })
-
+      
+    }
 
     let toggle = false;
     const getGeolocation = () => {
@@ -79,14 +83,11 @@ export default {
       console.log('my func call', toggle);
     }
 
-    onMounted(() => {
-      nextTick(()=>{
-        map.addLayer(componentLayer);
-      })
-    })
-
     return {
       getGeolocation,
+      drawIcon,
     }
   },
+
+
 };

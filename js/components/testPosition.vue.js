@@ -50,7 +50,7 @@ export default {
       
       const target = document.getElementById('map');
       const map = new ol.Map({
-        layers: [rasterLayer, vectorLayer],
+        layers: [rasterLayer,],
         target: target,
         view: new ol.View({
           center: [0, 0],

@@ -47,8 +47,7 @@ export default {
         return {
             layers,
         }
-    },
-    props: ['map'],
+    },  
     methods: {
         displayLayer(layer) {
             Object.values(this.layers).forEach((layerItem) => {

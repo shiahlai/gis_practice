@@ -41,9 +41,9 @@ export default {
             v-if="olMap.rmBlock">
                 <section id="mapZoomInOut"></section>
 
-                <map-taiwan-position></map-taiwan-position>
                 
-                <map-geolocation :map="olMap.map"></map-geolocation>
+                
+                <map-geolocation ref="geo"></map-geolocation>
                 
 
             </div>
@@ -63,8 +63,9 @@ export default {
     </main>
     `,
     setup() {
-        let olMap = reactive({
-            map: mapInit(),
+        const geo = ref();
+        
+        let olMap = reactive({        
             rtBlock: true,
             rbBlock: true,
             rmBlock: true,
@@ -73,11 +74,13 @@ export default {
         provide('olMap', olMap);
 
         onMounted(() => {
-            olMap.map = mapInit();        
+            olMap.map = mapInit();    
+            geo.value.drawIcon(olMap.map)
         })
 
         return {
-            olMap
+            olMap,
+            geo
         }
     }
 };
