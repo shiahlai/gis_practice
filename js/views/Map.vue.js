@@ -4,8 +4,8 @@ import MapControlMousePosition from '../components/MapControlMousePosition.vue.j
 import MapChangeBasemap from '../components/MapChangeBasemap.vue.js'
 import MapInfo from '../components/MapInfo.vue.js'
 import MapGeolocation from '../components/MapGeolocation.vue.js'
-import testPosition from '../components/testPosition.vue.js'
 import MapTaiwanPosition from '../components/MapTaiwanPosition.vue.js'
+import MapClear from '../components/MapClear.vue.js'
 
 const { ref, reactive, onMounted, computed, provide, inject } = Vue;
 const { useRouter, useRoute } = VueRouter;
@@ -18,8 +18,8 @@ export default {
         'map-change-basemap' : MapChangeBasemap,
         'map-info' : MapInfo,
         'map-geolocation' : MapGeolocation,
-        'test-position' : testPosition,
         'map-taiwan-position' : MapTaiwanPosition,
+        'map-clear' : MapClear,
     },
     template: `
     <!-- main -->
@@ -31,19 +31,19 @@ export default {
             class="rt-block" 
             v-if="olMap.rtBlock">
                 <map-change-basemap :map="olMap.map"></map-change-basemap>
-
-
-                
+              
             </div>
             
             <div 
             class="rm-block" 
             v-if="olMap.rmBlock">
                 <section id="mapZoomInOut"></section>
-
-                
+              
+                <map-taiwan-position ref="twp"></map-taiwan-position>
                 
                 <map-geolocation ref="geo"></map-geolocation>
+
+                <map-clear ref="clear"></map-clear>
                 
 
             </div>
@@ -64,6 +64,8 @@ export default {
     `,
     setup() {
         const geo = ref();
+        const twp = ref();
+        const clear = ref();
         
         let olMap = reactive({        
             rtBlock: true,
@@ -76,11 +78,15 @@ export default {
         onMounted(() => {
             olMap.map = mapInit();    
             geo.value.drawIcon(olMap.map)
+            twp.value.setMap(olMap.map)
+            clear.value.setMap(olMap.map)
         })
 
         return {
             olMap,
-            geo
+            geo,
+            twp,
+            clear,
         }
     }
 };

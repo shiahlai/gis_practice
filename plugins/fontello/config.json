@@ -133,6 +133,12 @@
       "css": "direction",
       "code": 61732,
       "src": "fontawesome"
+    },
+    {
+      "uid": "csuoy0rqoun3unhsgjoy2uumpldzbfmt",
+      "css": "trash",
+      "code": 59401,
+      "src": "typicons"
     }
   ]
 }

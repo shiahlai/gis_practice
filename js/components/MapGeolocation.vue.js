@@ -1,5 +1,4 @@
 const { ref, reactive, onMounted, computed, provide, inject, nextTick } = Vue;
-const { useRouter, useRoute } = VueRouter;
 
 export default {
   name: 'MapGeolocation',
@@ -15,12 +14,10 @@ export default {
     `,
   setup() {
 
-    let map, geolocation, componentLayer;
+    let geolocation;
 
-    
     const drawIcon = (map) => {
-      
-      
+
       const view = map.getView();
 
       geolocation = new ol.Geolocation({
@@ -29,7 +26,7 @@ export default {
           enableHighAccuracy: true,
         },
         projection: view.getProjection(),
-        
+
       });
 
       // handle geolocation error.
@@ -45,9 +42,9 @@ export default {
         accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
       });
 
-    
+
       const iconFeature = new ol.Feature();
-      
+
       const iconStyle = new ol.style.Style({
         image: new ol.style.Icon({
           anchor: [0.5, 46],
@@ -56,13 +53,13 @@ export default {
           src: '../icon/person_pin.svg',
         }),
       });
-      
+
       iconFeature.setStyle(iconStyle);
-      
+
       const vectorSource = new ol.source.Vector({
         features: [iconFeature],
       });
-      
+
       const vectorLayer = new ol.layer.Vector({
         source: vectorSource,
       });
@@ -73,7 +70,7 @@ export default {
         console.log('change:position', coordinates)
         iconFeature.setGeometry(coordinates ? new ol.geom.Point(coordinates) : null);
       });
-      
+
     }
 
     let toggle = false;

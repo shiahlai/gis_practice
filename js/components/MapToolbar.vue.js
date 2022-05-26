@@ -5,7 +5,7 @@ export default {
     name: 'MapToolBar',
     template: `
     <article id="mapToolbar" :class="{'show' : isShowNav}">
-    <nav class="toolbar-nav" class="shadow">
+    <nav class="toolbar-nav shadow">
         <ul>
             <template 
             v-for="(url, index) in toolbarList" 
